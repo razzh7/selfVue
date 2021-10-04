@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Vue双向绑定1.0</title>
+</head>
+<body>
+  <div id="test">
+    {{brand}}
+  </div>
+  <script type="text/javascript" src="./js/index.js"></script>
+  <script type="text/javascript" src="./js/observer.js"></script>
+  <script type="text/javascript" src="./js/watcher.js"></script>
+  <script type="text/javascript">
+    var el = document.getElementById("test");
+    var vue = new Vue({
+      brand: 'Ford',
+    },el,'brand')
+    window.setTimeout(function(){
+      vue.brand = 'Cadillac';
+    },2000);
+  </script>
+</body>
+</html>

@@ -29,8 +29,6 @@ function Observe(obj) {
     Object.keys(obj).forEach(key => {
       defineReactive(obj,key,obj[key]);
     })
-  } else {
-    return; //递归出口
   }
 }
 

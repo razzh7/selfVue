@@ -7,8 +7,10 @@ function Watcher(vm,key,updcb) { //实例化对象，键名，更新的回调函
 }
 Watcher.prototype.get = function() {
   Dep.target = this;
-  this.value = this.vm.$data[this.key]; //获取属性值（也会被observe劫持,将该实例放到订阅器subs队列中），存到this.value中
+  let value = this.vm.$data[this.key];
+  // this.value = this.vm.$data[this.key]; //获取属性值（也会被observe劫持,将该实例放到订阅器subs队列中），存到this.value中
   Dep.target = null; //订阅完成后清空Dep.target
+  return value;
 }
 Watcher.prototype.updated = function() {
   this.run();

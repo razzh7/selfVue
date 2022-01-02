@@ -1,5 +1,7 @@
 function defineReactive(obj,key,val) {
-  Observe(val); //继续递归，查看obj相应属性下是否还存在对象
+  if(typeof val === Object) {
+    Observe(val); //继续递归，查看obj相应属性下是否还存在对象
+  }
   let dep = new Dep();
   Object.defineProperty(obj, key, {
     configurable: true,

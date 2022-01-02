@@ -23,13 +23,20 @@ function defineReactive(obj,key,val) {
   })
 }
 
-function Observe(obj) {
-  if(obj && typeof obj === 'object') {
-//Object.keys遍历obj的目的在于defineReactive需要使用key值来访问obj下相应的属性
-    Object.keys(obj).forEach(key => {
-      defineReactive(obj,key,obj[key]);
-    })
+function Observe(value) {
+  /**
+   * walk方法将每一个属性都加上getter和setter,来侦听数据变化
+   * 只在value是对象时调用
+   */
+  if(value && typeof value === 'object') {
+    walk(value)
   }
+}
+
+function walk(obj) {
+  Object.keys(obj).forEach(key => {
+    defineReactive(obj,key,obj[key]);
+  })
 }
 
 //消息订阅器

@@ -24,15 +24,14 @@ function defineReactive(obj,key,val) {
 }
 
 function Observe(value) {
-  /**
-   * walk方法将每一个属性都加上getter和setter,来侦听数据变化
-   * 只在value是对象时调用
-   */
   if(value && typeof value === 'object') {
     walk(value)
   }
 }
-
+/**
+ * walk方法将每一个属性都加上getter和setter,来侦听数据变化
+ * 只在value是对象时调用
+ */
 function walk(obj) {
   Object.keys(obj).forEach(key => {
     defineReactive(obj,key,obj[key]);
